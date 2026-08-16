@@ -18,7 +18,8 @@ function publicUser(user) {
     dailyLimit: user.dailyLimit,
     txnLimit: user.txnLimit,
     active: user.active !== false,
-    createdAt: user.createdAt
+    createdAt: user.createdAt,
+    notifications: Array.isArray(user.notifications) ? user.notifications : []
   };
 }
 

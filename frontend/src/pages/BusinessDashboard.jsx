@@ -46,6 +46,20 @@ export default function BusinessDashboard() {
         <Link to="/app/business/send" className="btn btn-primary">+ Send money</Link>
       </div>
 
+      <div className="quick-actions">
+        <Link to="/app/business/send" className="quick-action"><span className="qa-icon">↗</span>Send</Link>
+        <Link to="/app/business/transactions" className="quick-action"><span className="qa-icon">⇄</span>Activity</Link>
+        {data.role === 'owner' ? (
+          <>
+            <Link to="/app/business/employees" className="quick-action"><span className="qa-icon">♟</span>Team</Link>
+            <Link to="/app/business/limits" className="quick-action"><span className="qa-icon">◎</span>Limits</Link>
+            <Link to="/app/business/audit" className="quick-action"><span className="qa-icon">≡</span>Audit</Link>
+          </>
+        ) : (
+          <Link to="/app/business/profile" className="quick-action"><span className="qa-icon">⚙</span>Limits</Link>
+        )}
+      </div>
+
       <div className="balance-card">
         <div className="balance-top">
           <span className="muted">Business balance</span>

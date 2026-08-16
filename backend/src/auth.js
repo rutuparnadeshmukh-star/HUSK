@@ -13,6 +13,7 @@ const {
 } = require('./security');
 const { authRequired } = require('./middleware');
 const { publicUser, issueAccessToken, findUserById } = require('./user');
+const { seedUserData } = require('./seed');
 
 const router = express.Router();
 
@@ -126,6 +127,7 @@ router.post('/register', authLimiter, async (req, res) => {
   }
 
   db.users.push(user);
+  seedUserData(db, user);
   persist();
 
   const tokens = createTokensForUser(user, req.body.device);
@@ -303,6 +305,18 @@ router.post('/toggle-biometrics', authRequired, authLimiter, async (req, res) =>
 
 router.get('/me', authRequired, (req, res) => {
   res.json({ user: publicUser(req.user) });
+});
+
+router.post('/notifications/read', authRequired, (req, res) => {
+  const db = load();
+  const user = db.users.find((u) => u.id === req.user.id);
+  if (!user) return res.status(404).json({ error: 'User not found.' });
+  if (!Array.isArray(user.notifications)) user.notifications = [];
+  user.notifications.forEach((n) => {
+    n.read = true;
+  });
+  persist();
+  res.json({ ok: true, notifications: user.notifications });
 });
 
 router.get('/business-code', authRequired, (req, res) => {

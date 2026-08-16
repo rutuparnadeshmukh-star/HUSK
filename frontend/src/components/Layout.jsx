@@ -4,6 +4,7 @@ import Logo from './Logo';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useToast } from '../context/ToastContext';
+import { api } from '../api';
 
 function navFor(user) {
   if (user.mode === 'business') {
@@ -32,19 +33,52 @@ function navFor(user) {
   ];
 }
 
+function mobileNavFor(user) {
+  if (user.mode === 'business') {
+    return [
+      { to: '/app/business', label: 'Home', icon: '▦' },
+      { to: '/app/business/transactions', label: 'Activity', icon: '⇄' },
+      { to: '/app/business/send', label: 'Send', icon: '↗' },
+      ...(user.role === 'owner' ? [{ to: '/app/business/employees', label: 'Team', icon: '♟' }] : []),
+      { to: '/app/business/profile', label: 'Profile', icon: '⚙' }
+    ];
+  }
+  return [
+    { to: '/app/personal', label: 'Home', icon: '▦' },
+    { to: '/app/personal/transactions', label: 'Activity', icon: '⇄' },
+    { to: '/app/personal/send', label: 'Send', icon: '↗' },
+    { to: '/app/personal/invest', label: 'Invest', icon: '⌁' },
+    { to: '/app/personal/profile', label: 'Profile', icon: '⚙' }
+  ];
+}
+
 export default function Layout() {
-  const { user, logout } = useAuth();
+  const { user, refreshUser, logout } = useAuth();
   const { theme, toggle } = useTheme();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
 
   const nav = navFor(user);
+  const mobileNav = mobileNavFor(user);
+  const notifications = user?.notifications || [];
+  const unread = notifications.filter((n) => !n.read).length;
 
   const handleLogout = async () => {
     await logout();
     toast('You have been logged out securely.', 'info');
     navigate('/login');
+  };
+
+  const markAllRead = async () => {
+    try {
+      await api.post('/auth/notifications/read');
+      await refreshUser();
+    } catch {
+      /* ignore */
+    }
+    setNotifOpen(false);
   };
 
   return (
@@ -94,14 +128,62 @@ export default function Layout() {
               </span>
             </div>
           </div>
-          <button type="button" className="btn btn-ghost theme-toggle" onClick={toggle} aria-label="Toggle theme">
-            {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-          </button>
+          <div className="topbar-actions">
+            <div className="notif-wrap">
+              <button
+                type="button"
+                className="icon-btn notif-bell"
+                onClick={() => setNotifOpen((o) => !o)}
+                aria-label="Notifications"
+              >
+                Alerts
+                {unread > 0 && <span className="notif-badge">{unread}</span>}
+              </button>
+              {notifOpen && (
+                <div className="notif-panel">
+                  <div className="notif-panel-head">
+                    <strong>Notifications</strong>
+                    <button type="button" className="btn btn-ghost btn-sm" onClick={markAllRead}>
+                      Mark all read
+                    </button>
+                  </div>
+                  {notifications.length === 0 ? (
+                    <p className="muted notif-empty">You're all caught up.</p>
+                  ) : (
+                    notifications.map((n) => (
+                      <div key={n.id} className={`notif-item ${n.read ? '' : 'unread'}`}>
+                        <div className="notif-title">{n.title}</div>
+                        <div className="muted tiny">{n.body}</div>
+                        <div className="muted tiny">{new Date(n.time).toLocaleString()}</div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
+            <button type="button" className="btn btn-ghost theme-toggle" onClick={toggle} aria-label="Toggle theme">
+              {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            </button>
+          </div>
         </header>
         <main className="page-content">
           <Outlet />
         </main>
       </div>
+
+      <nav className="mobile-nav">
+        {mobileNav.map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            end={item.to === '/app/personal' || item.to === '/app/business'}
+            className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+          >
+            <span className="mobile-nav-icon">{item.icon}</span>
+            <span className="mobile-nav-label">{item.label}</span>
+          </NavLink>
+        ))}
+      </nav>
     </div>
   );
 }

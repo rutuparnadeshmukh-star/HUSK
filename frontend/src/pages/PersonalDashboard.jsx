@@ -44,6 +44,14 @@ export default function PersonalDashboard() {
         <Link to="/app/personal/send" className="btn btn-primary">+ Send money</Link>
       </div>
 
+      <div className="quick-actions">
+        <Link to="/app/personal/send" className="quick-action"><span className="qa-icon">↗</span>Send</Link>
+        <Link to="/app/personal/invest" className="quick-action"><span className="qa-icon">⌁</span>Invest</Link>
+        <Link to="/app/personal/expenses" className="quick-action"><span className="qa-icon">◎</span>Expenses</Link>
+        <Link to="/app/personal/prices" className="quick-action"><span className="qa-icon">≣</span>Compare</Link>
+        <button type="button" className="quick-action" onClick={() => setLinkOpen(true)}><span className="qa-icon">+</span>Link bank</button>
+      </div>
+
       <div className="balance-card">
         <div className="balance-top">
           <span className="muted">Available balance</span>
