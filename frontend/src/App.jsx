@@ -11,10 +11,20 @@ import PriceComparison from './pages/PriceComparison';
 import Transactions from './pages/Transactions';
 import SendMoney from './pages/SendMoney';
 import Profile from './pages/Profile';
+import Bills from './pages/Bills';
+import P2P from './pages/P2P';
+import Budget from './pages/Budget';
+import EmiCalc from './pages/EmiCalc';
+import Analytics from './pages/Analytics';
+import Rewards from './pages/Rewards';
 import BusinessDashboard from './pages/BusinessDashboard';
 import BusinessEmployees from './pages/BusinessEmployees';
 import BusinessAudit from './pages/BusinessAudit';
 import BusinessLimits from './pages/BusinessLimits';
+import Invoices from './pages/Invoices';
+import Vendors from './pages/Vendors';
+import Cashflow from './pages/Cashflow';
+import Payroll from './pages/Payroll';
 
 function RequireAuth({ children, businessOnly = false }) {
   const { user, ready } = useAuth();
@@ -53,6 +63,12 @@ export default function App() {
         <Route path="prices" element={<PriceComparison />} />
         <Route path="transactions" element={<Transactions />} />
         <Route path="send" element={<SendMoney />} />
+        <Route path="bills" element={<Bills />} />
+        <Route path="p2p" element={<P2P />} />
+        <Route path="budget" element={<Budget />} />
+        <Route path="emi" element={<EmiCalc />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="rewards" element={<Rewards />} />
         <Route path="profile" element={<Profile />} />
       </Route>
 
@@ -63,6 +79,12 @@ export default function App() {
         <Route path="limits" element={<BusinessLimits />} />
         <Route path="transactions" element={<Transactions />} />
         <Route path="send" element={<SendMoney />} />
+        <Route path="invoices" element={<Invoices />} />
+        <Route path="vendors" element={<Vendors />} />
+        <Route path="cashflow" element={<Cashflow />} />
+        <Route path="payroll" element={<Payroll />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="rewards" element={<Rewards />} />
         <Route path="profile" element={<Profile />} />
       </Route>
 

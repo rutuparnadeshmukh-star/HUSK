@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Logo from './Logo';
+import Franky from './Franky';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useToast } from '../context/ToastContext';
@@ -10,25 +11,37 @@ function navFor(user) {
   if (user.mode === 'business') {
     return [
       { to: '/app/business', label: 'Dashboard', icon: '▦' },
+      { to: '/app/business/analytics', label: 'Analytics', icon: '⌁' },
+      { to: '/app/business/cashflow', label: 'Cash flow', icon: '⇅' },
+      { to: '/app/business/invoices', label: 'Invoices', icon: '≡' },
+      { to: '/app/business/vendors', label: 'Vendors', icon: '↗' },
       { to: '/app/business/transactions', label: 'Transactions', icon: '⇄' },
-      { to: '/app/business/send', label: 'Send money', icon: '↗' },
+      { to: '/app/business/send', label: 'Send money', icon: '↪' },
       ...(user.role === 'owner'
         ? [
-            { to: '/app/business/employees', label: 'Employees', icon: '♟' },
-            { to: '/app/business/limits', label: 'Spend limits', icon: '◎' },
-            { to: '/app/business/audit', label: 'Audit log', icon: '≡' }
+            { to: '/app/business/payroll', label: 'Payroll', icon: '♟' },
+            { to: '/app/business/employees', label: 'Manage access', icon: '◎' },
+            { to: '/app/business/limits', label: 'Spend limits', icon: '≣' },
+            { to: '/app/business/audit', label: 'Audit log', icon: '⚙' }
           ]
         : []),
-      { to: '/app/business/profile', label: 'Profile', icon: '⚙' }
+      { to: '/app/business/rewards', label: 'Husk points', icon: '★' },
+      { to: '/app/business/profile', label: 'Profile', icon: '☰' }
     ];
   }
   return [
     { to: '/app/personal', label: 'Dashboard', icon: '▦' },
+    { to: '/app/personal/analytics', label: 'Analytics', icon: '⌁' },
     { to: '/app/personal/transactions', label: 'Transactions', icon: '⇄' },
     { to: '/app/personal/send', label: 'Send money', icon: '↗' },
+    { to: '/app/personal/bills', label: 'Bills & recharge', icon: '≡' },
+    { to: '/app/personal/p2p', label: 'P2P transfers', icon: '⇅' },
     { to: '/app/personal/expenses', label: 'Expenses', icon: '◎' },
-    { to: '/app/personal/invest', label: 'Invest', icon: '⌁' },
-    { to: '/app/personal/prices', label: 'Price compare', icon: '≣' },
+    { to: '/app/personal/budget', label: 'Save budget', icon: '≣' },
+    { to: '/app/personal/emi', label: 'EMI calculator', icon: '⌁' },
+    { to: '/app/personal/invest', label: 'Invest', icon: '↘' },
+    { to: '/app/personal/prices', label: 'Price compare', icon: '★' },
+    { to: '/app/personal/rewards', label: 'Husk points', icon: '♟' },
     { to: '/app/personal/profile', label: 'Profile', icon: '⚙' }
   ];
 }
@@ -184,6 +197,7 @@ export default function Layout() {
           </NavLink>
         ))}
       </nav>
+      <Franky />
     </div>
   );
 }

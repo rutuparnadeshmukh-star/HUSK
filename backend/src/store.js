@@ -13,7 +13,13 @@ const defaultDb = {
   auditLog: [],
   orders: [],
   bankLinks: [],
-  portfolio: []
+  portfolio: [],
+  bills: [],
+  p2pMessages: [],
+  invoices: [],
+  recurringInvoices: [],
+  pettyCash: [],
+  payslips: []
 };
 
 let db = null;

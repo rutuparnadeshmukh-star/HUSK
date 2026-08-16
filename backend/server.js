@@ -10,6 +10,7 @@ const auth = require('./src/auth');
 const personal = require('./src/personal');
 const business = require('./src/business');
 const payments = require('./src/payments');
+const features = require('./src/features');
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
@@ -68,6 +69,7 @@ app.use('/api/personal', personal.router);
 app.use('/api/business', business);
 app.use('/api/webhooks', payments);
 app.use('/api/payments', payments);
+app.use('/api', features.router);
 
 const distDir = path.join(__dirname, '..', 'frontend', 'dist');
 if (fs.existsSync(distDir)) {

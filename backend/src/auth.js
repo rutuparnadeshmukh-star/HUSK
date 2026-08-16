@@ -101,9 +101,11 @@ router.post('/register', authLimiter, async (req, res) => {
     balance: 25000,
     dailyLimit: mode === 'business' ? 100000 : 50000,
     txnLimit: mode === 'business' ? 50000 : 20000,
+    salary: null,
     active: true,
     failedAttempts: 0,
     lockUntil: 0,
+    points: 0,
     createdAt: nowIso()
   };
 
@@ -117,6 +119,7 @@ router.post('/register', authLimiter, async (req, res) => {
       balance: 0,
       dailyLimit: owner.defaultEmployeeDailyLimit || 50000,
       txnLimit: owner.defaultEmployeeTxnLimit || 20000,
+      salary: owner.defaultEmployeeSalary || 40000,
       mode: 'business'
     };
     logAudit(owner.id, user.id, 'employee_granted', `Employee "${name}" (@${username}) was granted access to ${owner.name}'s business.`);

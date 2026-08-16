@@ -14,6 +14,11 @@ function pushTx(db, userId, tx) {
 
 function seedPersonalUser(db, user) {
   user.balance = 86838;
+  user.points = 320;
+  user.pointLog = [
+    { id: genId('pt'), points: 120, note: 'Welcome bonus points', date: daysAgo(0, 9) },
+    { id: genId('pt'), points: 200, note: 'Sign-up reward', date: daysAgo(0, 10) }
+  ];
 
   pushTx(db, user.id, { direction: 'in', type: 'salary', to: 'Acme Corp · Salary', amount: 65000, note: 'Monthly salary credit', date: daysAgo(2, 9) });
   pushTx(db, user.id, { direction: 'in', type: 'refund', to: 'Flipkart', amount: 1299, note: 'Order refund', date: daysAgo(3, 15) });
