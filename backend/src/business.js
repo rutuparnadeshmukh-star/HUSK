@@ -99,7 +99,7 @@ router.post('/employees', requireOwner, async (req, res) => {
     id: genId('usr'),
     name,
     username,
-    email: email || `${username}@husk.local`,
+    email: email || `${username}@artham.local`,
     pinHash: await bcrypt.hash(pin, 10),
     paymentPinHash: null,
     biometricEnabled: false,

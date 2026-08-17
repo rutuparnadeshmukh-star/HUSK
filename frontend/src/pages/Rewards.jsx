@@ -32,12 +32,12 @@ export default function Rewards() {
     <div className="page-stack">
       <div className="page-head">
         <div>
-          <h1>Husk points</h1>
+          <h1>Artham points</h1>
           <p className="muted">Earn 1 point per ₹100 spent. Redeem 50 points = ₹1 cashback.</p>
         </div>
       </div>
       <div className="balance-card">
-        <div className="balance-top"><span className="muted">Points balance</span><span className="chip">HUSK</span></div>
+        <div className="balance-top"><span className="muted">Points balance</span><span className="chip">ARTHAM</span></div>
         <div className="balance-amount">{data.points.toLocaleString('en-IN')} pts</div>
         <div className="balance-stats">
           <div><span className="muted tiny">Cashback value</span><strong>₹{cash.toLocaleString('en-IN')}</strong></div>

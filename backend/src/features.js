@@ -28,12 +28,12 @@ const BILLERS = [
 const BILL_AMOUNT = (b) => 120 + ((b.id.charCodeAt(1) * 37) % 4800);
 
 const P2P_CONTACTS = [
-  { id: 'c1', name: 'Aarav Mehta', username: 'aarav', upi: 'aarav@husk' },
-  { id: 'c2', name: 'Priya Sharma', username: 'priya', upi: 'priya@husk' },
-  { id: 'c3', name: 'Rohan Iyer', username: 'rohan', upi: 'rohan@husk' },
-  { id: 'c4', name: 'Sneha Kulkarni', username: 'sneha', upi: 'sneha@husk' },
-  { id: 'c5', name: 'Kabir Khan', username: 'kabir', upi: 'kabir@husk' },
-  { id: 'c6', name: 'Ananya Das', username: 'ananya', upi: 'ananya@husk' }
+  { id: 'c1', name: 'Aarav Mehta', username: 'aarav', upi: 'aarav@artham' },
+  { id: 'c2', name: 'Priya Sharma', username: 'priya', upi: 'priya@artham' },
+  { id: 'c3', name: 'Rohan Iyer', username: 'rohan', upi: 'rohan@artham' },
+  { id: 'c4', name: 'Sneha Kulkarni', username: 'sneha', upi: 'sneha@artham' },
+  { id: 'c5', name: 'Kabir Khan', username: 'kabir', upi: 'kabir@artham' },
+  { id: 'c6', name: 'Ananya Das', username: 'ananya', upi: 'ananya@artham' }
 ];
 
 const FOREX = [
@@ -66,11 +66,11 @@ const FRANKY_RULES = [
   [/invest|stock|gold|mutual|sip|forex/, 'Invest offers stocks, forex, mutual funds, SIPs and digital gold with candlestick charts. Returns shown are simulated.'],
   [/budget|save|limit/, 'Set a monthly Save Money budget on the Budget page. I can nudge you if you are close to it.'],
   [/gst|tax|invoice/, 'Business users get GST tracking, invoicing and a cash flow dashboard. Ask your owner if you need access.'],
-  [/point|reward/, 'You earn Husk Points on spend - 1 point for every ₹100. Redeem for cashback (50 points = ₹1).'],
-  [/who are you|help|franky/, 'I am Franky, your HUSK assistant. Ask me about balance, sending money, bills, invest, budget, GST or points.'],
+  [/point|reward/, 'You earn Artham Points on spend - 1 point for every ₹100. Redeem for cashback (50 points = ₹1).'],
+  [/who are you|help|franky/, 'I am Franky, your ARTHAM assistant. Ask me about balance, sending money, bills, invest, budget, GST or points.'],
   [/loan|emi/, 'Use the EMI calculator under Tools to estimate monthly payments before you borrow.'],
   [/security|pin|safe/, 'Your login PIN and Payment PIN are separate, hashed and rate-limited. Biometrics never bypass the PIN.'],
-  [/hi|hello|hey/, 'Hello! I am Franky. Ask me anything about HUSK banking.'],
+  [/hi|hello|hey/, 'Hello! I am Franky. Ask me anything about ARTHAM banking.'],
   [/bye|thanks|thank/, 'You are welcome! Franky is here anytime you need me.']
 ];
 const FRANKY_FALLBACK = 'I can help with balance, sending money, bills, invest, budgets, GST, points and security. Try asking in a different way.';
@@ -240,7 +240,7 @@ router.post('/points/redeem', (req, res) => {
   const cash = amt / 50;
   const op = req.business;
   op.balance = Math.round((op.balance + cash) * 100) / 100;
-  const tx = addTx(db, u, op, 'in', 'reward', 'HUSK Points Cashback', cash, `Redeemed ${amt} points`);
+  const tx = addTx(db, u, op, 'in', 'reward', 'ARTHAM Points Cashback', cash, `Redeemed ${amt} points`);
   if (!Array.isArray(u.pointLog)) u.pointLog = [];
   u.pointLog.unshift({ id: genId('pt'), points: -amt, note: `Redeemed ₹${cash.toLocaleString('en-IN')} cashback`, date: nowIso() });
   persist();

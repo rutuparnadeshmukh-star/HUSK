@@ -1,12 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="huskGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#6366f1"/>
-      <stop offset="1" stop-color="#8b5cf6"/>
+    <linearGradient id="arthamBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e293b"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="arthamGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b45309"/>
+      <stop offset="0.5" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#fbbf24"/>
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#huskGrad)"/>
-  <path d="M18 46V18h7v11h14V18h7v28h-7V35H25v11z" fill="#ffffff"/>
-  <circle cx="46" cy="18" r="5" fill="#fbbf24"/>
-  <path d="M8 50c8-12 16-16 24-12s20 4 28 0" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#arthamBg)"/>
+  <path d="M32 16 L17 50 M32 16 L47 50 M22 39 H42" stroke="url(#arthamGold)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M32 5 L37 9 L32 13 L27 9 Z" fill="#fbbf24"/>
 </svg>

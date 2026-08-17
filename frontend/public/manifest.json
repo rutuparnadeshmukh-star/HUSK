@@ -1,0 +1,32 @@
+{
+  "background_color": "#0f172a",
+  "dir": "auto",
+  "display": "fullscreen",
+  "name": "ARTHAM — Banking, Invest & Pay",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ARTHAM",
+  "start_url": "/",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "type": "image/svg+xml",
+      "isSquare": true,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 64,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "id": "artham",
+  "description": "PIN-secured personal & business banking with investing and expense tracking",
+  "lang": "en",
+  "categories": [
+    "finance",
+    "business"
+  ]
+}

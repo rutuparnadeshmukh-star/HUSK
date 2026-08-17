@@ -49,7 +49,7 @@ export default function Profile() {
     try {
       const a = Number(addAmount);
       if (!a || a <= 0) throw new Error('Enter a valid amount.');
-      const { order } = await api.post('/payments/order', { amount: a, purpose: 'Add money to HUSK' });
+      const { order } = await api.post('/payments/order', { amount: a, purpose: 'Add money to ARTHAM' });
       await new Promise((r) => setTimeout(r, 1800));
       const d = await api.post('/payments/simulate', { orderId: order.id });
       setAddMoneyOpen(false);
@@ -121,7 +121,7 @@ export default function Profile() {
           <div className="card-head"><h3>Add money</h3></div>
           <p className="muted">Simulate a deposit via the mock Razorpay gateway. Webhook signatures are verified server-side.</p>
           <button type="button" className="btn btn-primary" onClick={() => setAddMoneyOpen(true)}>
-            Add money to HUSK
+            Add money to ARTHAM
           </button>
         </div>
 

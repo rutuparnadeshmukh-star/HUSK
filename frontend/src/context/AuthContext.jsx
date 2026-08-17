@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
       setUser(null);
       setReady(true);
     });
-    const tokens = JSON.parse(localStorage.getItem('husk_tokens') || '{}');
+    const tokens = JSON.parse(localStorage.getItem('artham_tokens') || '{}');
     if (tokens.access) {
       api.get('/auth/me')
         .then((d) => {
@@ -57,7 +57,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const logout = useCallback(async () => {
-    const tokens = JSON.parse(localStorage.getItem('husk_tokens') || '{}');
+    const tokens = JSON.parse(localStorage.getItem('artham_tokens') || '{}');
     if (tokens.refresh) {
       try {
         await api.post('/auth/logout', { refreshToken: tokens.refresh }, { auth: false });

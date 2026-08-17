@@ -22,7 +22,7 @@ export default function Landing() {
       <section className="hero">
         <div className="hero-badge">Secured with PIN + biometric verification</div>
         <h1>
-          Banking, invest & pay — <span className="gradient">all in HUSK</span>
+          Banking, invest & pay — <span className="gradient">all in ARTHAM</span>
         </h1>
         <p className="hero-sub">
           Manage personal and business money with PIN-first security, spend limits, expense insights and simulated markets.
@@ -51,7 +51,7 @@ export default function Landing() {
       </section>
 
       <footer className="landing-foot">
-        <Logo size={20} withText={false} /> <span className="muted tiny">HUSK — a demo banking app. All data is simulated.</span>
+        <Logo size={20} withText={false} /> <span className="muted tiny">ARTHAM — a demo banking app. All data is simulated.</span>
       </footer>
     </div>
   );

@@ -62,7 +62,7 @@ app.use(express.json({
   }
 }));
 
-app.use('/api/health', (req, res) => res.json({ ok: true, service: 'husk-api', time: new Date().toISOString() }));
+app.use('/api/health', (req, res) => res.json({ ok: true, service: 'artham-api', time: new Date().toISOString() }));
 
 app.use('/api/auth', auth.router);
 app.use('/api/personal', personal.router);
@@ -97,7 +97,7 @@ app.use((req, res) => {
 const server = http.createServer(app);
 server.listen(PORT, '0.0.0.0', () => {
   load();
-  console.log(`HUSK server listening on port ${PORT}`);
+  console.log(`ARTHAM server listening on port ${PORT}`);
 });
 
 process.on('SIGINT', () => {

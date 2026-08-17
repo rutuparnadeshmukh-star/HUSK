@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { load } = require('./store');
 
-const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'husk-dev-access-secret';
+const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'artham-dev-access-secret';
 
 function publicUser(user) {
   return {

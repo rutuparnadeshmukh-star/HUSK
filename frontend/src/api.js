@@ -8,30 +8,30 @@ export function setUnauthorizedHandler(fn) {
 
 function getTokens() {
   try {
-    return JSON.parse(localStorage.getItem('husk_tokens') || '{}');
+    return JSON.parse(localStorage.getItem('artham_tokens') || '{}');
   } catch {
     return {};
   }
 }
 
 export function saveTokens({ access, refresh }) {
-  localStorage.setItem('husk_tokens', JSON.stringify({ access, refresh }));
+  localStorage.setItem('artham_tokens', JSON.stringify({ access, refresh }));
 }
 
 export function clearTokens() {
-  localStorage.removeItem('husk_tokens');
+  localStorage.removeItem('artham_tokens');
 }
 
 export function getStoredUser() {
   try {
-    return JSON.parse(localStorage.getItem('husk_user') || 'null');
+    return JSON.parse(localStorage.getItem('artham_user') || 'null');
   } catch {
     return null;
   }
 }
 
 export function saveUser(user) {
-  localStorage.setItem('husk_user', JSON.stringify(user));
+  localStorage.setItem('artham_user', JSON.stringify(user));
 }
 
 async function request(path, { method = 'GET', body, auth = true, retry = true } = {}) {

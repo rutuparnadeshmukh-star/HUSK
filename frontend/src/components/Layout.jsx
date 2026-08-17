@@ -25,7 +25,7 @@ function navFor(user) {
             { to: '/app/business/audit', label: 'Audit log', icon: '⚙' }
           ]
         : []),
-      { to: '/app/business/rewards', label: 'Husk points', icon: '★' },
+      { to: '/app/business/rewards', label: 'Artham points', icon: '★' },
       { to: '/app/business/profile', label: 'Profile', icon: '☰' }
     ];
   }
@@ -41,7 +41,7 @@ function navFor(user) {
     { to: '/app/personal/emi', label: 'EMI calculator', icon: '⌁' },
     { to: '/app/personal/invest', label: 'Invest', icon: '↘' },
     { to: '/app/personal/prices', label: 'Price compare', icon: '★' },
-    { to: '/app/personal/rewards', label: 'Husk points', icon: '♟' },
+    { to: '/app/personal/rewards', label: 'Artham points', icon: '♟' },
     { to: '/app/personal/profile', label: 'Profile', icon: '⚙' }
   ];
 }

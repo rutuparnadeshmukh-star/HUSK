@@ -1,8 +1,8 @@
-# HUSK — Banking, Invest & Pay
+# ARTHAM — Banking, Invest & Pay
 
 A professional demo banking web app with **Personal** and **Business** modes, PIN-first security, expense tracking, simulated investing with candlestick charts, price comparison, and business access controls.
 
-> All data is simulated. This is a presentation-ready demo application.
+> *Artham* (अर्थम्) means "valuable" in classical Hindi. All data is simulated. This is a presentation-ready demo application.
 
 ## Features
 

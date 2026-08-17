@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { sha256 } = require('./security');
 const { findUserById } = require('./user');
 
-const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'husk-dev-access-secret';
+const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || 'artham-dev-access-secret';
 
 function authRequired(req, res, next) {
   const header = req.headers.authorization || '';

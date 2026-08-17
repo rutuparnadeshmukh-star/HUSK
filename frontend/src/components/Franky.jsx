@@ -39,7 +39,7 @@ export default function Franky() {
             <div className="franky-avatar">F</div>
             <div>
               <strong>Franky</strong>
-              <span className="muted tiny">HUSK AI assistant · scripted</span>
+              <span className="muted tiny">ARTHAM AI assistant · scripted</span>
             </div>
             <button type="button" className="icon-btn" onClick={() => setOpen(false)}>×</button>
           </div>

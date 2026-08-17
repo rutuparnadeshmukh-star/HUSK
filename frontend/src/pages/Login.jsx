@@ -84,7 +84,7 @@ export default function Login() {
         {step === 'pin' ? (
           <>
             <h2 className="auth-title">Welcome back</h2>
-            <p className="muted auth-sub">Log in to your HUSK account</p>
+            <p className="muted auth-sub">Log in to your ARTHAM account</p>
             <div className="auth-username">
               <input
                 type="text"
@@ -105,7 +105,7 @@ export default function Login() {
               disabled={busy}
             />
             <p className="auth-foot">
-              New to HUSK? <Link to="/register">Create an account</Link>
+              New to ARTHAM? <Link to="/register">Create an account</Link>
             </p>
           </>
         ) : (

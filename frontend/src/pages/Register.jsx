@@ -82,7 +82,7 @@ export default function Register() {
         device: navigator.userAgent || 'Web browser'
       };
       const u = await register(payload);
-      toast(`Account created. Welcome to HUSK, ${u.user.name}!`, 'success');
+      toast(`Account created. Welcome to ARTHAM, ${u.user.name}!`, 'success');
       if (u.user.role === 'owner' && u.user.mode === 'business' && u.employeeCode) {
         setCreated({ employeeCode: u.employeeCode });
         return;
@@ -122,7 +122,7 @@ export default function Register() {
           <Logo size={56} />
         </div>
         <h2 className="auth-title">Create your account</h2>
-        <p className="muted auth-sub">Start banking securely with HUSK</p>
+        <p className="muted auth-sub">Start banking securely with ARTHAM</p>
 
         <div className="mode-tabs">
           {MODES.map((m) => (

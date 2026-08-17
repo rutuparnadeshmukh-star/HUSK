@@ -1,10 +1,10 @@
 export function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('husk_theme', theme);
+  localStorage.setItem('artham_theme', theme);
 }
 
 export function getInitialTheme() {
-  const saved = localStorage.getItem('husk_theme');
+  const saved = localStorage.getItem('artham_theme');
   if (saved === 'light' || saved === 'dark') return saved;
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
   return 'light';

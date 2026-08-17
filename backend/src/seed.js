@@ -26,7 +26,7 @@ function seedPersonalUser(db, user) {
   pushTx(db, user.id, { direction: 'out', type: 'food', to: 'Swiggy', amount: 642, note: 'Lunch order', date: daysAgo(0, 13) });
   pushTx(db, user.id, { direction: 'out', type: 'transport', to: 'Uber', amount: 320, note: 'Ride to office', date: daysAgo(0, 8) });
   pushTx(db, user.id, { direction: 'out', type: 'entertainment', to: 'Netflix', amount: 499, note: 'Monthly subscription', date: daysAgo(4, 20) });
-  pushTx(db, user.id, { direction: 'in', type: 'cashback', to: 'HUSK Rewards', amount: 150, note: 'Cashback earned', date: daysAgo(1, 21) });
+  pushTx(db, user.id, { direction: 'in', type: 'cashback', to: 'ARTHAM Rewards', amount: 150, note: 'Cashback earned', date: daysAgo(1, 21) });
 
   const expenses = [
     ['Food', 642, 'Swiggy lunch', daysAgo(0, 13)],
@@ -66,7 +66,7 @@ function seedPersonalUser(db, user) {
   });
 
   user.notifications = [
-    { id: genId('ntf'), title: 'Salary credited', body: '₹65,000 credited to your HUSK account.', time: daysAgo(2, 9), read: false },
+    { id: genId('ntf'), title: 'Salary credited', body: '₹65,000 credited to your ARTHAM account.', time: daysAgo(2, 9), read: false },
     { id: genId('ntf'), title: 'Security tip', body: 'Biometric login is on. Your PIN is never skipped.', time: daysAgo(1, 10), read: false },
     { id: genId('ntf'), title: 'Cashback earned', body: 'You earned ₹150 cashback this week.', time: daysAgo(1, 21), read: true }
   ];

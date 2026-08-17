@@ -5,7 +5,7 @@ const { webhookLimiter, paymentLimiter, verifyRazorpaySignature, validPositiveAm
 
 const router = express.Router();
 
-const RAZORPAY_WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET || 'husk-dev-webhook-secret';
+const RAZORPAY_WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET || 'artham-dev-webhook-secret';
 
 router.post('/razorpay', webhookLimiter, (req, res) => {
   const signature = req.headers['x-razorpay-signature'];
